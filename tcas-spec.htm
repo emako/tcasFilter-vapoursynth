@@ -1,0 +1,1071 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="tcas-spec.files/filelist.xml">
+<link rel=Edit-Time-Data href="tcas-spec.files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>TCAS File Format Specification</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>milkyjing</o:Author>
+  <o:LastAuthor>MC SYSTEM</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>237</o:TotalTime>
+  <o:Created>2012-01-19T12:21:00Z</o:Created>
+  <o:LastSaved>2012-01-19T12:21:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1170</o:Words>
+  <o:Characters>6669</o:Characters>
+  <o:Company>微软中国</o:Company>
+  <o:Lines>55</o:Lines>
+  <o:Paragraphs>15</o:Paragraphs>
+  <o:CharactersWithSpaces>7824</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+@font-face
+	{font-family:黑体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimHei;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:1 135135232 16 0 262144 0;}
+@font-face
+	{font-family:"\@黑体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:1 135135232 16 0 262144 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-style-next:正文;
+	margin-top:17.0pt;
+	margin-right:0cm;
+	margin-bottom:16.5pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:240%;
+	mso-pagination:lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:22.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:22.0pt;}
+h2
+	{mso-style-next:正文;
+	margin-top:13.0pt;
+	margin-right:0cm;
+	margin-bottom:13.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	line-height:173%;
+	mso-pagination:lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:黑体;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:1.0pt;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:147795548;
+	mso-list-type:hybrid;
+	mso-list-template-ids:328499522 -317707460 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:21.75pt;
+	mso-level-number-position:left;
+	margin-left:21.75pt;
+	text-indent:-21.75pt;}
+@list l1
+	{mso-list-id:1044064244;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1021898372 -60785226 -65395866 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:21.75pt;
+	mso-level-number-position:left;
+	margin-left:21.75pt;
+	text-indent:-21.75pt;}
+@list l1:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:42.75pt;
+	mso-level-number-position:left;
+	margin-left:42.75pt;
+	text-indent:-21.75pt;}
+@list l2
+	{mso-list-id:1139028465;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2008409328 2063766890 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l2:level1
+	{mso-level-start-at:0;
+	mso-level-number-format:bullet;
+	mso-level-text:-;
+	mso-level-tab-stop:18.0pt;
+	mso-level-number-position:left;
+	margin-left:18.0pt;
+	text-indent:-18.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:宋体;}
+@list l3
+	{mso-list-id:1284265053;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1888072472 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l4
+	{mso-list-id:2021203284;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1007655918 -2129754686 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:21.75pt;
+	mso-level-number-position:left;
+	margin-left:21.75pt;
+	text-indent:-21.75pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:网格型;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<h2><span lang=EN-US style='font-size:22.0pt;line-height:173%;font-family:"Courier New"'>TCAS
+File Format Specification<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Version
+0.96 – Date: July 5th, 2011<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>Introduction<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";color:red'>TCAS</span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'> is short for <b
+style='mso-bidi-font-weight:normal'><span style='color:red'>T</span></b>ernary <b
+style='mso-bidi-font-weight:normal'><span style='color:red'>C</span></b>olor <b
+style='mso-bidi-font-weight:normal'><span style='color:red'>A</span></b>dvanced
+<b style='mso-bidi-font-weight:normal'><span style='color:red'>S</span></b>ubtitle,
+it is extended from TCS. TCAS files have an extension <i style='mso-bidi-font-style:
+normal'>.TCAS</i>. TCAS is part of the <b style='mso-bidi-font-weight:normal'><span
+style='color:red'>RIXE</span></b> project. A TCAS filename looks like <i
+style='mso-bidi-font-style:normal'>example.tcas</i>.</span><span lang=EN-US> </span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>TCAS is a file
+format that mainly stores raw pixel data as well as its position and living
+duration. Theoretically speaking, TCAS allows you to draw anything on video
+frames, although it is mainly designed to store karaoke effects. After parsing
+the data stored in the TCAS file, you will get TCAS frames, which are going to be
+rendered on the video frames. See also the <span style='color:red'>libtcas</span>
+and <span style='color:red'>tcasFilter</span> project for its implementation
+and usage.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>TCAS File Structures<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Summary<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>TCAS
+file is mainly organized by two part the Header and the Body. Header contains 4
+signature bytes (a DWORD) indicating the TCAS file format, other general
+information about TCAS file is also stored in the Header. Body holds the main
+TCAS data, and this part is consisted of many data chunks. The data stored in
+the TCAS file is aligned to 4 bytes (a DWORD), so DWORD is the unit used when
+talking about the size of a certain chunk in TCAS file instead of BYTE. The
+minimum unit of TCAS data is a <span style='color:red'>D</span>ynamic <span
+style='color:red'>I</span>solated <span style='color:red'>P</span>ixel (<span
+style='color:red'>DIP</span>), which holds information about its living
+duration, position and pixel values. Dislike videos whose data is stored in a linear
+time-line sequence form, the data of TCAS file (TCAS data chunks) can be stored
+in any order. This feature is to guarantee the flexibility of using TCAS file
+to store karaoke effects, since we can write the effects in any order as we
+like without caring about their effective duration. However non-linear timing
+makes it inefficient to parse the TCAS file, so TCAS brings in the indexing
+technique to make time-line linearization possible, hence increasing performance
+dramatically, moreover, as a side effect of such indexing technique,
+multi-threading becomes possible and can be easily implemented at the parsing
+phase. Another important improvement is that TCAS brings in key-framing which
+can enormously decrease the target file size.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><i style='mso-bidi-font-style:
+normal'><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Detail<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";color:teal'>Header<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>The
+size of the Header part is <b style='mso-bidi-font-weight:normal'>16</b> DWORDs,
+the same with TCS.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:480;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+ mso-border-insideh:.5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Offset<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Size<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Name<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Purpose<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0000h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Signature<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Identify
+  the TCAS file<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0004h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Version<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>TCAS
+  file version<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:14.7pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:14.7pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0008h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:14.7pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:14.7pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Flag<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:14.7pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>HIWORD
+  indicates TCAS file type, LOWORD indicates whether to use key framing<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>000Ch<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Resolution<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Resolution
+  of TCAS FX<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0010h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>MinTime<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Minimal
+  time of the TCAS FX<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0014h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>MaxTime<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Maximal
+  time of the TCAS FX<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0018h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Chunks<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Number
+  of data chunks<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>001Ch<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><a name="OLE_LINK4"></a><a name="OLE_LINK3"><span
+  style='mso-bookmark:OLE_LINK4'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New"'>fpsNumerator</span></span></a><span lang=EN-US
+  style='font-size:12.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><a name="OLE_LINK7"><span lang=EN-US style='font-size:
+  12.0pt;font-family:"Courier New"'>Numerator of TCAS FX frame rate</span></a><span
+  lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0020h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>1
+  DWORD<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><a name="OLE_LINK6"></a><a name="OLE_LINK5"><span
+  style='mso-bookmark:OLE_LINK6'><span lang=EN-US style='font-size:12.0pt;
+  font-family:"Courier New"'>fpsDenominator</span></span></a><span lang=EN-US
+  style='font-size:12.0pt;font-family:"Courier New"'><o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Denominator
+  of TCAS FX frame rate<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10;mso-yfti-lastrow:yes;height:17.3pt'>
+  <td width=88 valign=top style='width:66.0pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>0024h<o:p></o:p></span></p>
+  </td>
+  <td width=103 valign=top style='width:77.2pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>7
+  DWORDs<o:p></o:p></span></p>
+  </td>
+  <td width=164 valign=top style='width:123.3pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Reserved<o:p></o:p></span></p>
+  </td>
+  <td width=801 valign=top style='width:600.7pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.3pt'>
+  <p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>May
+  be used in the future<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Remarks:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>The <span style='color:blue'>Signature</span> of TCAS
+file is <span style='color:red'>0x54</span> <span style='color:red'>0x43</span>
+<span style='color:red'>0x41</span> <span style='color:red'>0x53</span>, which
+means <i style='mso-bidi-font-style:normal'><span style='color:red'>TCAS</span></i>
+in ASCII.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>Low word of <span style='color:blue'>Version</span>
+indicates minor TCAS file version, the initial minor TCAS file version is 0. High
+word of <span style='color:blue'>Version</span> indicates major TCAS file
+version, the initial major TCS file version is 1.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>The meaning of <span style='color:blue'>Flag</span> in
+TCAS is slightly different from the old TCS file format. HIWORD of <span
+style='color:blue'>Flag</span> is just the same with <span style='color:blue'>Flag</span>
+in TCS file, but LOWORD of <span style='color:blue'>Flag</span> indicates whether
+to enable key framing. TCAS file type can be 0 - <span style='color:red'>raw
+TCAS file</span>, 1 - <span style='color:red'>compressed TCAS file</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>Low word of <span style='color:blue'>Resolution</span>
+indicates the horizontal resolution that the TCAS FX is dealing with. High word
+of <span style='color:blue'>Resolution</span> indicates the vertical resolution
+that the TCAS FX is dealing with. The unit of Resolution is pixel. Note that
+the maximal width and height can both reach 65535, but they are regarded as
+reserved value, so, in fact the maximal valid width and height are both 65534,
+which is still much enough as video resolution.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New";color:blue'>MinTime</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'> indicates the first time
+that the TCAS FX has taken effects. The unit of <span style='color:blue'>MinTime</span>
+is millisecond, so the range of <span style='color:blue'>MinTime</span> is [0,
+4294967295], more than 1 thousand hours.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New";color:blue'>MaxTime</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'> indicates the first time
+that the TCAS FX has ended its effects. The unit of <span style='color:blue'>MaxTime</span>
+is millisecond, so the range of <span style='color:blue'>MaxTime</span> is [0,
+4294967295], more than 1 thousand hours.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New";color:blue'>Chunks</span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'> indicate the number of data
+chunks in the body part of the TCAS file.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l0 level1 lfo1;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>TCAS FX FPS = <span style='color:blue'>fpsNumerator</span>
+/ (double) <span style='color:blue'>fpsDenominator</span>, <span
+style='color:blue'>fpsNumerator</span> and <span style='color:blue'>fpsDenominator</span>
+indicate in which frame rate the TCAS FX has been generated. However, in most
+cases of rendering a TCAS file, they will simply be ignored.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";color:teal'>Body<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>The
+Body part starts at <b style='mso-bidi-font-weight:normal'>0040h</b>, right
+after the Header part. A TCAS file is created by receiving raw TCAS data
+chunks.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New";
+color:teal'>Raw TCAS Data Chunk Stream<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Raw
+TCAS data chunk stream is made up of dozens of raw DIPs. The data is organized
+as below<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:861pt;
+ height:156pt'>
+ <v:imagedata src="tcas-spec.files/image001.gif" o:title="raw"/>
+</v:shape><![endif]--><![if !vml]><img width=1148 height=208
+src="tcas-spec.files/image001.gif" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New";
+color:teal'>Compressed TCAS Data Chunk Stream<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Compressed
+TCAS data chunk stream is made up of dozens of packed DIPs. The data is
+organized as below<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:711pt;height:156pt'>
+ <v:imagedata src="tcas-spec.files/image002.gif" o:title="compressed"/>
+</v:shape><![endif]--><![if !vml]><img width=948 height=208
+src="tcas-spec.files/image002.gif" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Definition
+of <span style='color:red'>Chunk</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Chunk
+is the minimal unit of complete TCAS FX data, but when talking about its exact
+meaning, it is different between raw TCAS data and TCAS data.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
+tab-stops:list 18.0pt'><![if !supportLists]><span lang=EN-US style='font-size:
+12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>When used to describe raw TCAS data: A chunk means
+data of a DIP. The size of a chunk in raw TCAS data stream is 5 DWORDs.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:18.0pt;text-indent:-18.0pt;mso-list:l2 level1 lfo3;
+tab-stops:list 18.0pt'><![if !supportLists]><span lang=EN-US style='font-size:
+12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>-<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>When used to describe TCAS data: A chunk stands for
+several packed DIPs. The size of a chunk in TCAS file can be calculated by the
+following formula: size = (3 + 2 * nPixels) DWORDs.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Remarks:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>We obtain such a file format partly because that
+karaoke FXs usually occupy relatively small area and their time durations are
+relatively short compared to the host videos.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>The unit of <i style='mso-bidi-font-style:normal'>StartT</i>/<i
+style='mso-bidi-font-style:normal'>EndT</i> is millisecond, so the range of <i
+style='mso-bidi-font-style:normal'>StartT</i>/<i style='mso-bidi-font-style:
+normal'>EndT</i> is [0, 4294967295] ms, more than 1 thousand hours. The unit of
+<i style='mso-bidi-font-style:normal'>PosX</i>/<i style='mso-bidi-font-style:
+normal'>PosY</i> is pixel, so the range of <i style='mso-bidi-font-style:normal'>PosX</i>/<i
+style='mso-bidi-font-style:normal'>PosY</i> is 65535 pix. Note that, 65535 is reserved,
+so the maximal valid PosX and PosY are both 65534. When coming to the rendering
+phase, the range of valid PosX/PosY is -32767 to 32767, while -32768 is
+reserved.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Layer</span></i><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'> will contribute
+when coming to render the TCAS FX, TCAS frames with higher layers will overlay
+upon TCAS frames with lower layers to make up a whole FX frame. However, in one
+FX frame, if two TCAS frames are on the same layer, then the one which is placed
+in a larger part of TCAS file will overlay upon the one which is placed in a
+prior TCAS file. Its value is between 0 and 15 (inclusive).<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><i style='mso-bidi-font-style:normal'><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>nPixels</span></i><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'> indicates the
+number of packed DIPs in the chunk. It occupies the low 24 bits of a DWORD.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>The smallest size of a chunk is 5 DWORDs.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>In the compression process, <span style='color:red'>adjacent</span>
+raw DIPs who have the same <i style='mso-bidi-font-style:normal'>StartT</i> <i
+style='mso-bidi-font-style:normal'>EndT Layer type and pair</i> can share the
+same chunk. Here, <i style='mso-bidi-font-style:normal'>adjacent</i> is a big
+issue. It indicates that you should consider the <span style='color:red'>locality</span>
+when creating the original raw TCAS FX data. Every compression of two raw DIPs
+saves 3 DWORDs space.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>7.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>Any two packed DIPs in the same chunk if they have
+the same position the latter will cover the former at the rendering phase;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>8.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>When parsing, the TCAS frame should be merged
+according to their layers and orders;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:21.75pt;text-indent:-21.75pt;mso-list:
+l4 level1 lfo2;tab-stops:list 21.75pt'><![if !supportLists]><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:"Courier New"'><span
+style='mso-list:Ignore'>9.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>type indicates which key framing algorithm should be
+applied, 0 indicates no key framing, 1 indicates fast generation, 2 indicates
+bilinear filtered. Its value is between 0 and 7 (inclusive), and in TCAS file chunks
+with the same type except for type 0, should appear in pairs, and their layer
+must be the same. Intermediate frame chunks will be generated between two key
+frames, that’s why they should appear in pairs. With key frames, StartT = EndT.
+<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>TCAS File Creation<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Please refer to the libtcas
+project.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>Indexing Technique<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Please refer to the libtcas
+project.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal><a name="OLE_LINK2"></a><a name="OLE_LINK1"><span
+style='mso-bookmark:OLE_LINK2'><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'><o:p>&nbsp;</o:p></span></span></a></p>
+
+<span style='mso-bookmark:OLE_LINK2'></span><span style='mso-bookmark:OLE_LINK1'></span>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>Key Framing Technique<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Please refer to the libtcas
+project.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span lang=EN-US
+style='font-size:14.0pt;font-family:"Courier New"'>TCAS FX Frame Generation
+Technique<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><i style='mso-bidi-font-style:normal'><span lang=EN-US
+style='font-size:12.0pt;font-family:"Courier New"'>Please refer to the libtcas
+project.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'>Note:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l3 level1 lfo5'><![if !supportLists]><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>libtcas is the implementation of this specification,
+and this specification is also a description of libtcas.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-18.0pt;mso-list:l3 level1 lfo5'><![if !supportLists]><span
+lang=EN-US style='font-size:12.0pt;font-family:"Courier New";mso-fareast-font-family:
+"Courier New"'><span style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;
+</span></span></span><![endif]><span lang=EN-US style='font-size:12.0pt;
+font-family:"Courier New"'>To see the usage of libtcas please check the tcax
+project and the tcasFilter project.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='font-size:12.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
