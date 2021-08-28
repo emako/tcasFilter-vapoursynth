@@ -32,3 +32,7 @@ http://tcax.org/forum.php?mod=viewthread&tid=220
   
 **[Convert the image file to TCAS]**  
 http://tcax.org/forum.php?mod=viewthread&tid=135
+
+TCAS File Format Specification
+---
+http://www.tcax.org/docs/tcas-spec.htm
