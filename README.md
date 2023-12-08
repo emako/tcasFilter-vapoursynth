@@ -11,7 +11,7 @@ Example script for VapourSynth
 ```python
 import vapoursynth as vs
 
-core = vs.get_core()
+core = vs.core
 src = core.lsmas.LibavSMASHSource(u'example.mp4')
 src = core.tcax.TcasSub(src, file=u'example.tcas')
 src.set_output()
@@ -34,15 +34,18 @@ TcasSub("example.tcas")
 
 How to create a TCAS file
 ---
-TCAX forum for more information.
+> TCAX forum for more information.
 
 **[TCAX Homepage]**
+
 http://tcax.org/
 
 **[TCAS special effects tutorial]**
+
 http://tcax.org/forum.php?mod=viewthread&tid=220
 
 **[Convert the image file to TCAS]**
+
 http://tcax.org/forum.php?mod=viewthread&tid=135
 
 
