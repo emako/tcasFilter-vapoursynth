@@ -1,2 +1,3 @@
 *.vpy linguist-language=Python
 *.html linguist-vendored
+*.htm linguist-vendored
